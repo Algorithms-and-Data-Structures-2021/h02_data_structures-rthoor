@@ -45,27 +45,27 @@ void ArrayList::Add(Element e) {
 }
 
 void ArrayList::Insert(int index, Element e) {
-  if (index != 0 && index != size_) {
-    // index = 0 и index == size это особые случаи, при которых всегда можно выполнить операцию вставки
-    internal::check_out_of_range(index, 0, size_);
-  }
+        if (index != 0 && index != size_) {
+            // index = 0 и index == size это особые случаи, при которых всегда можно выполнить операцию вставки
+            internal::check_out_of_range(index, 0, size_);
+        }
 
-  // Tip 1: используйте метод resize(new_capacity) для расширения емкости массива
-  // напишите свой код здесь ...
+        // Tip 1: используйте метод resize(new_capacity) для расширения емкости массива
+        // напишите свой код здесь ...
 
-  if(size_ == capacity_){
-      resize(capacity_+kCapacityGrowthCoefficient);
-  }
+        if(size_ == capacity_){
+            resize(capacity_+kCapacityGrowthCoefficient);
+        }
 
-  assert(size_ < capacity_);  // я ни в коем случае не дам вам совершить ошибку всей вашей жизни
+        assert(size_ < capacity_);  // я ни в коем случае не дам вам совершить ошибку всей вашей жизни
 
-  // Tip 2: для свдига элементов вправо можете использовать std::copy
-  // напишите свой код после расширения емкости массива здесь ...
+        // Tip 2: для свдига элементов вправо можете использовать std::copy
+        // напишите свой код после расширения емкости массива здесь ...
 
-  std::copy(data_ + index, data_ + size_, data_ + index + 1);
-  data_[index] = e;
-  size_++;
-}
+        std::copy(data_ + index, data_ + size_, data_ + index + 1);
+        data_[index] = e;
+        size_++;
+    }
 
 void ArrayList::Set(int index, Element value) {
   internal::check_out_of_range(index, 0, size_);
